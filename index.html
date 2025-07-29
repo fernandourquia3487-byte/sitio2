@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular - Ingeniería en Sistemas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #EDE9E3;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #241F19;
+    }
+    .filtro-container {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    select {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .semestre {
+      background: #FFF;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .semestre h2 {
+      margin-top: 0;
+      color: #87816E;
+    }
+    .materia {
+      background: #E7D7C9;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 8px;
+      display: inline-block;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: #241F19;
+    }
+    .materia.aprobada {
+      background: #BEBF6E;
+      text-decoration: line-through;
+      color: #666;
+    }
+    .materia.habilitada {
+      background: #A7C7E7 !important;
+    }
+    .requisito {
+      font-size: 0.8em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Ingeniería en Sistemas</h1>
+
+  <div class="filtro-container">
+    <label for="filtroPeriodo">Filtrar por período:</label>
+    <select id="filtroPeriodo">
+      <option value="todos">Mostrar todos</option>
+      <option value="1">Primer Período</option>
+      <option value="2">Segundo Período</option>
+      <option value="3">Tercer Período</option>
+      <option value="4">Cuarto Período</option>
+      <option value="5">Quinto Período</option>
+      <option value="6">Sexto Período</option>
+      <option value="7">Séptimo Período</option>
+      <option value="8">Octavo Período</option>
+      <option value="9">Noveno Período</option>
+      <option value="10">Décimo Período</option>
+      <option value="11">Décimo Primer Período</option>
+      <option value="12">Décimo Segundo Período</option>
+      <option value="13">Décimo Tercer Período</option>
+      <option value="14">Décimo Cuarto Período</option>
+      <option value="15">Décimo Quinto Período</option>
+    </select>
+  </div>
+
+  <!-- Periodos existentes (1 al 15) -->
+  
+
+<div class="semestre">
+    <h2>Primer Período</h2>
+    <div class="materia" id="IS-110" data-requisitos="">IS-110 - Introducción a la Ingeniería en Sistemas<br><span class="requisito">Requisito: Ninguno</span></div>
+    <div class="materia" id="MM-110" data-requisitos="">MM-110 - Matemática I<br><span class="requisito">Requisito: Ninguno</span></div>
+    <div class="materia" id="MM-111" data-requisitos="">MM-111 - Geometría y Trigonometría<br><span class="requisito">Requisito: Ninguno</span></div>
+    <div class="materia" id="SC-101" data-requisitos="">SC-101 - Sociología<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Segundo Período</h2>
+    <div class="materia" id="MM-211" data-requisitos="MM-110">MM-211 - Vectores y Matrices<br><span class="requisito">Requisito: MM-110</span></div>
+    <div class="materia" id="IN-101" data-requisitos="">IN-101 - Inglés I<br><span class="requisito">Requisito: Ninguno</span></div>
+    <div class="materia" id="MM-201" data-requisitos="MM-110,MM-111">MM-201 - Cálculo I<br><span class="requisito">Requisito: MM-110, MM-111</span></div>
+    <div class="materia" id="ELECT-DEP" data-requisitos="">Electiva - Campo de los Deportes<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Tercer Período</h2>
+    <div class="materia" id="MM-202" data-requisitos="MM-201">MM-202 - Cálculo II<br><span class="requisito">Requisito: MM-201</span></div>
+    <div class="materia" id="IN-102" data-requisitos="IN-101">IN-102 - Inglés II<br><span class="requisito">Requisito: IN-101</span></div>
+    <div class="materia" id="MM-314" data-requisitos="MM-110,IS-110">MM-314 - Programación I<br><span class="requisito">Requisito: MM-110, IS-110</span></div>
+    <div class="materia" id="EG-011" data-requisitos="">EG-011 - Español General I<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Cuarto Período</h2>
+    <div class="materia" id="FS-100" data-requisitos="MM-201,MM-211">FS-100 - Física I<br><span class="requisito">Requisito: MM-201, MM-211</span></div>
+    <div class="materia" id="MM-411" data-requisitos="MM-202">MM-411 - Ecuaciones Diferenciales<br><span class="requisito">Requisito: MM-202</span></div>
+    <div class="materia" id="IS-210" data-requisitos="MM-314">IS-210 - Programación II<br><span class="requisito">Requisito: MM-314</span></div>
+    <div class="materia" id="FF-101" data-requisitos="">FF-101 - Filosofía<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Quinto Período</h2>
+    <div class="materia" id="IN-103" data-requisitos="IN-102">IN-103 - Inglés III<br><span class="requisito">Requisito: IN-102</span></div>
+    <div class="materia" id="DQ-101" data-requisitos="MM-211">DQ-101 - Dibujo I<br><span class="requisito">Requisito: MM-211</span></div>
+    <div class="materia" id="FS-200" data-requisitos="FS-100">FS-200 - Física II<br><span class="requisito">Requisito: FS-100</span></div>
+    <div class="materia" id="IS-311" data-requisitos="MM-411,FS-100">IS-311 - Circuitos Eléctricos para Ingeniería en Sistemas<br><span class="requisito">Requisito: MM-411, FS-100</span></div>
+    <div class="materia" id="OPT-I" data-requisitos="">Optativa I<br><span class="requisito">Requisito: Ver requisito</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Sexto Período</h2>
+    <div class="materia" id="MM-420" data-requisitos="MM-314,FF-101">MM-420 - Matemática Discreta<br><span class="requisito">Requisito: MM-314, FF-101</span></div>
+    <div class="materia" id="DQ-102" data-requisitos="DQ-101">DQ-102 - Dibujo II<br><span class="requisito">Requisito: DQ-101</span></div>
+    <div class="materia" id="MM-401" data-requisitos="MM-202">MM-401 - Estadística<br><span class="requisito">Requisito: MM-202</span></div>
+    <div class="materia" id="IS-310" data-requisitos="IS-210">IS-310 - Algoritmos y Estructura de Datos<br><span class="requisito">Requisito: IS-210</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Séptimo Período</h2>
+    <div class="materia" id="IS-410" data-requisitos="IS-310">IS-410 - Programación Orientada a Objetos<br><span class="requisito">Requisito: IS-310</span></div>
+    <div class="materia" id="IS-411" data-requisitos="IS-311">IS-411 - Electrónica para Ingeniería en Sistemas<br><span class="requisito">Requisito: IS-311</span></div>
+    <div class="materia" id="IS-412" data-requisitos="IS-310,MM-420">IS-412 - Sistemas Operativos I<br><span class="requisito">Requisito: IS-310, MM-420</span></div>
+    <div class="materia" id="ELECT-NAT" data-requisitos="">Electiva - Campo de las Ciencias Naturales<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Octavo Período</h2>
+    <div class="materia" id="IS-501" data-requisitos="MM-401,IS-410">IS-501 - Base de Datos I<br><span class="requisito">Requisito: MM-401, IS-410</span></div>
+    <div class="materia" id="HH-101" data-requisitos="">HH-101 - Historia de Honduras<br><span class="requisito">Requisito: Ninguno</span></div>
+    <div class="materia" id="IS-510" data-requisitos="IS-311">IS-510 - Instalaciones Eléctricas<br><span class="requisito">Requisito: IS-311</span></div>
+    <div class="materia" id="IS-511" data-requisitos="IS-411">IS-511 - Redes de Datos I<br><span class="requisito">Requisito: IS-411</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Noveno Período</h2>
+    <div class="materia" id="IS-512" data-requisitos="IS-412">IS-512 - Sistemas Operativos II<br><span class="requisito">Requisito: IS-412 <IS-412></IS-412></span></div>
+    <div class="materia" id="IS-601" data-requisitos="IS-501">IS-601 - Base de Datos II<br><span class="requisito">Requisito: IS-501</span></div>
+    <div class="materia" id="IS-603" data-requisitos="IS-511">IS-603 - Arquitectura de computadoras<br><span class="requisito">Requisito: IS-511</span></div>
+    <div class="materia" id="IS-513" data-requisitos="IS-410">IS-513 - Lenguajes de Programación<br><span class="requisito">Requisito: IS-410</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Período</h2>
+    <div class="materia" id="IS-611" data-requisitos="IS-511">IS-611 - Redes de Datos II<br><span class="requisito">Requisito: IS-511</span></div>
+    <div class="materia" id="IS-711" data-requisitos="IS-603">IS-711 - Diseño digital<br><span class="requisito">Requisito: IS-603</span></div>
+    <div class="materia" id="IS-602" data-requisitos="IS-511">IS-602 - Sistemas de Información<br><span class="requisito">Requisito: IS-513</span></div>
+    <div class="materia" id="ELECT-NAT" data-requisitos="">Electiva - Campo de las Humanidades<br><span class="requisito">Requisito: Ninguno</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Primer Período</h2>
+    <div class="materia" id="IS-811" data-requisitos="IS-711, IS-512">IS-811 - Seguridad Informática<br><span class="requisito">Requisito: IS-711, IS-512</span></div>
+    <div class="materia" id="IS-720" data-requisitos="MM-420">IS-720 - Administración I<br><span class="requisito">Requisito: MM-420</span></div>
+    <div class="materia" id="IS-702" data-requisitos="IS-602">IS-702 - Análisis y Diseño de Sistemas<br><span class="requisito">Requisito: IS-602</span></div>
+    <div class="materia" id="ELECT-NAT" data-requisitos="">Optativa I<br><span class="requisito">Requisito: Ver requisito</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Segundo Período</h2>
+    <div class="materia" id="IS-721" data-requisitos="IS-720">IS-721 - Contabilidad I<br><span class="requisito">Requisito: IS-720</span></div>
+    <div class="materia" id="IS-903" data-requisitos="IS-811">IS-903 - Auditoría Informática<br><span class="requisito">Requisito: IS-702</span></div>
+    <div class="materia" id="IS-701" data-requisitos="IS-601, IS-602">IS-701 - Inteligencia Artificial<br><span class="requisito">Requisito: IS-601, IS-602</span></div>
+    <div class="materia" id="IS-802" data-requisitos="IS-702">IS-802 - Ingeniería del Software<br><span class="requisito">Requisito: IS-702</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Tercer Período</h2>
+    <div class="materia" id="IS-820" data-requisitos="IS-721">IS-820 - Finanzas Administrativas<br><span class="requisito">Requisito: IS-721</span></div>
+    <div class="materia" id="IS-902" data-requisitos="IS-802">IS-902 - Industria del Software<br><span class="requisito">Requisito: IS-802</span></div>
+    <div class="materia" id="IS-904" data-requisitos="IS-811">IS-904 - Gerencia Informática<br><span class="requisito">Requisito: IS-811</span></div>
+    <div class="materia" id="ELECT-NAT" data-requisitos="">Optativa II <br><span class="requisito">Requisito: Ver requisito</span></div>
+    
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Cuarto Período</h2>
+    <div class="materia" id="IS-906" data-requisitos="IS-904">IS-906 - Tópicos Especiales y Avanzados<br><span class="requisito">Requisito: IS-904</span></div>
+    <div class="materia" id="IS-905" data-requisitos="IS-820">IS-905 - Economía Digital<br><span class="requisito">Requisito: IS-820</span></div>
+    <div class="materia" id="ELECT-NAT" data-requisitos="">Optativa III <br><span class="requisito">Requisito: Ver requisito</span></div>
+    <div class="materia" id="IS-115" data-requisitos="">IS-115 - Seminario de Investigación<br><span class="requisito">Requisito: ???</span></div>
+  </div>
+
+  <div class="semestre">
+    <h2>Décimo Quinto Período</h2>
+    <div class="materia" id="IS-910" data-requisitos="IS-904">IS-910 - Teoría de la Simulación<br><span class="requisito">Requisito: IS-904</span></div>
+    <div class="materia" id="IS-911" data-requisitos="IS-603">IS-911 - Microprocesadores<br><span class="requisito">Requisito: IS-603</span></div>
+    <div class="materia" id="IS-914" data-requisitos="IS-820">IS-914 - Liderazgo para el cambio<br><span class="requisito">Requisito: IS-820</span></div>
+    <div class="materia" id="IS-912" data-requisitos="IS-701">IS-912 - Sistemas Expertos<br><span class="requisito">Requisito: IS-701</span></div>
+    <div class="materia" id="IS-913" data-requisitos="IS-603">IS-913 - Diseño de Compiladores<br><span class="requisito">Requisito: IS-603</span></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const materias = document.querySelectorAll('.materia');
+      const semestres = document.querySelectorAll('.semestre');
+      const filtro = document.getElementById('filtroPeriodo');
+
+      function actualizarEstadoMaterias() {
+        const aprobadas = new Set([...materias].filter(m => m.classList.contains('aprobada')).map(m => m.id));
+
+        materias.forEach(materia => {
+          const requisitos = materia.dataset.requisitos
+            .split(',')
+            .map(r => r.trim())
+            .filter(r => r);
+
+          const aprobadosTodos = requisitos.every(req => aprobadas.has(req));
+
+          materia.classList.remove('habilitada');
+          if (!materia.classList.contains('aprobada') && aprobadosTodos && requisitos.length > 0) {
+            materia.classList.add('habilitada');
+          }
+        });
+      }
+
+      materias.forEach(el => {
+        el.addEventListener('click', () => {
+          const requisitos = el.dataset.requisitos
+            .split(',')
+            .map(r => r.trim())
+            .filter(r => r);
+
+          const aprobadas = new Set([...materias].filter(m => m.classList.contains('aprobada')).map(m => m.id));
+
+          const puedeAprobarse = requisitos.every(req => aprobadas.has(req));
+
+          if (requisitos.length === 0 || puedeAprobarse) {
+            el.classList.toggle('aprobada');
+            actualizarEstadoMaterias();
+          } else {
+            alert('No puedes marcar esta clase como aprobada sin antes aprobar sus requisitos: ' + requisitos.join(', '));
+          }
+        });
+      });
+
+      filtro.addEventListener('change', () => {
+        const periodoSeleccionado = filtro.value;
+
+        semestres.forEach((sem, index) => {
+          if (periodoSeleccionado === "todos") {
+            sem.style.display = 'block';
+          } else {
+            const periodoActual = (index + 1).toString();
+            sem.style.display = (periodoSeleccionado === periodoActual) ? 'block' : 'none';
+          }
+        });
+      });
+
+      actualizarEstadoMaterias();
+    });
+  </script>
+</body>
+</html>
