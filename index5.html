@@ -1,0 +1,2287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urkía - Plan de Estudios</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* =========================
+       PANTALLA DE LOGIN
+    ========================= */
+    .login-container {
+      background: #121212;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 448px;
+      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #00d4ff, #1db9ff);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: black;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: white;
+    }
+
+    .social-login {
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #727272;
+      border-radius: 500px;
+      background: transparent;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      border-color: white;
+      transform: scale(1.02);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 2rem 0;
+      color: #a7a7a7;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #292929;
+    }
+
+    .divider span {
+      padding: 0 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #727272;
+      border-radius: 4px;
+      background: #121212;
+      color: white;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #00d4ff;
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: #a7a7a7;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #a7a7a7;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .remember-me input {
+      width: auto;
+      margin-right: 8px;
+      accent-color: #00d4ff;
+    }
+
+    .remember-me label {
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 16px;
+      background: #00d4ff;
+      color: black;
+      border: none;
+      border-radius: 500px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 2rem;
+    }
+
+    .login-btn:hover {
+      background: #1db9ff;
+      transform: scale(1.02);
+    }
+
+    .login-btn:disabled {
+      background: #535353;
+      color: #a7a7a7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .forgot-password a {
+      color: white;
+      text-decoration: underline;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .signup-link {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #292929;
+    }
+
+    .signup-link p {
+      color: #a7a7a7;
+      font-size: 16px;
+      margin-bottom: 1rem;
+    }
+
+    .signup-btn {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 12px 32px;
+      border: 1px solid #727272;
+      border-radius: 500px;
+      display: inline-block;
+      transition: all 0.2s ease;
+    }
+
+    .signup-btn:hover {
+      border-color: white;
+      transform: scale(1.02);
+    }
+
+    .error-message {
+      background: #e22134;
+      color: white;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 1rem 0;
+      font-size: 14px;
+      display: none;
+    }
+
+    .success-message {
+      background: #00d4ff;
+      color: black;
+      padding: 12px;
+      border-radius: 4px;
+      margin: 1rem 0;
+      font-size: 14px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .auth-toggle {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .auth-toggle button {
+      background: none;
+      border: none;
+      color: #00d4ff;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* =========================
+       SELECCIÓN DE CARRERA
+    ========================= */
+    .career-selection {
+      display: none;
+      background: #000000;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .career-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .welcome-message {
+      margin-bottom: 3rem;
+    }
+
+    .welcome-message h1 {
+      font-size: 2.5rem;
+      color: #00d4ff;
+      margin-bottom: 1rem;
+    }
+
+    .welcome-message p {
+      font-size: 1.2rem;
+      color: #a7a7a7;
+    }
+
+    .career-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .career-card {
+      background: #121212;
+      border: 2px solid #292929;
+      border-radius: 12px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+
+    .career-card:hover {
+      border-color: #00d4ff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+    }
+
+    .career-card.selected {
+      border-color: #00d4ff;
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    .career-card h3 {
+      color: #00d4ff;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .career-card p {
+      color: #a7a7a7;
+      font-size: 0.9rem;
+    }
+
+    .continue-btn {
+      background: #00d4ff;
+      color: black;
+      border: none;
+      padding: 16px 48px;
+      border-radius: 500px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-right: 1rem;
+    }
+
+    .continue-btn:hover {
+      background: #1db9ff;
+      transform: scale(1.02);
+    }
+
+    .continue-btn:disabled {
+      background: #535353;
+      color: #a7a7a7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .logout-btn-career {
+      background: transparent;
+      color: #a7a7a7;
+      border: 1px solid #727272;
+      padding: 16px 48px;
+      border-radius: 500px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logout-btn-career:hover {
+      color: white;
+      border-color: white;
+      transform: scale(1.02);
+    }
+
+    /* =========================
+       MALLA CURRICULAR
+    ========================= */
+    .malla-curricular-container {
+      display: none;
+      background: #000000;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .malla-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .malla-header h1 {
+      color: #00d4ff;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .malla-header .user-info {
+      color: #a7a7a7;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .header-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .change-career-btn {
+      background: transparent;
+      color: #00d4ff;
+      border: 1px solid #00d4ff;
+      padding: 12px 24px;
+      border-radius: 500px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .change-career-btn:hover {
+      background: #00d4ff;
+      color: black;
+    }
+
+    .logout-btn-malla {
+      background: #e22134;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 500px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logout-btn-malla:hover {
+      background: #c41e3a;
+      transform: scale(1.02);
+    }
+
+    .malla-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Períodos */
+    .period {
+      margin-bottom: 3rem;
+    }
+
+    .period-header {
+      background: #121212;
+      padding: 1.5rem;
+      border-radius: 12px 12px 0 0;
+      border-left: 4px solid #00d4ff;
+    }
+
+    .period-header h2 {
+      color: #00d4ff;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .period-header p {
+      color: #a7a7a7;
+      font-size: 1rem;
+    }
+
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      background: #0a0a0a;
+      padding: 2rem;
+      border-radius: 0 0 12px 12px;
+    }
+
+    /* Materias/Clases */
+    .materia {
+      background: #1e1e1e;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .materia:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+    }
+
+    .materia::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 100%;
+      background: #00d4ff;
+    }
+
+    /* Estados de las materias por departamento */
+    .materia.matematicas::before { background: #9c27b0; }
+    .materia.fisica::before { background: #2196f3; }
+    .materia.sistemas::before { background: #ff9800; }
+    .materia.quimica::before { background: #4caf50; }
+    .materia.electrica::before { background: #f44336; }
+    .materia.mecanica::before { background: #795548; }
+    .materia.defider::before { background: #607d8b; }
+    .materia.ingles::before { background: #e91e63; }
+    .materia.dibujo::before { background: #673ab7; }
+
+    .materia.matematicas { border-color: #9c27b0; }
+    .materia.fisica { border-color: #2196f3; }
+    .materia.sistemas { border-color: #ff9800; }
+    .materia.quimica { border-color: #4caf50; }
+    .materia.electrica { border-color: #f44336; }
+    .materia.mecanica { border-color: #795548; }
+    .materia.defider { border-color: #607d8b; }
+    .materia.ingles { border-color: #e91e63; }
+    .materia.dibujo { border-color: #673ab7; }
+
+    .materia.aprobada {
+      background: #1b4332;
+      border-color: #4caf50;
+      opacity: 0.8;
+    }
+
+    .materia.aprobada::after {
+      content: '✓';
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      color: #4caf50;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .materia.habilitada {
+      border-color: #00d4ff;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+
+    .materia.bloqueada {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: #2a2a2a;
+    }
+
+    .materia h3 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .materia .codigo {
+      color: #00d4ff;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .materia .creditos {
+      color: #a7a7a7;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .materia .departamento {
+      color: #ffeb3b;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .materia .requisitos {
+      color: #999;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #333;
+    }
+
+    /* Leyenda de colores */
+    .legend {
+      background: #121212;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .legend h3 {
+      color: #00d4ff;
+      margin-bottom: 1rem;
+    }
+
+    .legend-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+
+    .legend-color.matematicas { background: #9c27b0; }
+    .legend-color.fisica { background: #2196f3; }
+    .legend-color.sistemas { background: #ff9800; }
+    .legend-color.quimica { background: #4caf50; }
+    .legend-color.electrica { background: #f44336; }
+    .legend-color.mecanica { background: #795548; }
+    .legend-color.defider { background: #607d8b; }
+    .legend-color.ingles { background: #e91e63; }
+    .legend-color.dibujo { background: #673ab7; }
+
+    .legend-text {
+      color: #a7a7a7;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #292929;
+      margin-top: 3rem;
+    }
+
+    .footer p {
+      color: #a7a7a7;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .login-container {
+        position: static;
+        transform: none;
+        margin: 2rem auto;
+        max-width: 100%;
+        padding: 2rem 1rem;
+      }
+
+      .career-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subjects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-controls {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- ==========================================
+       PANTALLA DE AUTENTICACIÓN
+  ========================================== -->
+  <div id="auth-container" class="login-container">
+    <div class="logo-container">
+      <div class="logo">U</div>
+      <h1>Inicia sesión en Urkía</h1>
+    </div>
+
+    <div class="social-login">
+      <button class="social-btn" id="google-login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continuar con Google
+      </button>
+    </div>
+
+    <div class="divider">
+      <span>o</span>
+    </div>
+
+    <form id="auth-form">
+      <div class="form-group">
+        <label for="name">Nombre completo</label>
+        <input type="text" id="name-input" placeholder="Tu nombre completo">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico o nombre de usuario</label>
+        <input type="email" id="email-input" placeholder="Correo electrónico o nombre de usuario" required>
+        <div id="email-error" style="color: #e22134; font-size: 12px; margin-top: 4px; display: none;">
+          Ingresa tu correo electrónico o nombre de usuario de Urkía.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <div class="password-container">
+          <input type="password" id="password-input" placeholder="Contraseña" required>
+          <button type="button" class="toggle-password" id="toggle-password">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="remember-me">
+        <input type="checkbox" id="remember-me">
+        <label for="remember-me">Recuérdame</label>
+      </div>
+
+      <button type="submit" class="login-btn" id="login-btn">Iniciar sesión</button>
+    </form>
+
+    <div class="error-message" id="error-message"></div>
+    <div class="success-message" id="success-message"></div>
+
+    <div class="forgot-password">
+      <a href="#" id="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div class="signup-link">
+      <p>¿No tienes cuenta?</p>
+      <a href="#" class="signup-btn" id="signup-toggle">Regístrate en Urkía</a>
+    </div>
+
+    <div class="auth-toggle">
+      <p style="color: #a7a7a7; font-size: 14px; margin-top: 1rem;">¿Ya tienes cuenta? 
+        <button id="login-toggle" style="display: none;">Inicia sesión aquí</button>
+      </p>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SELECCIÓN DE CARRERA
+  ========================================== -->
+  <div id="career-selection" class="career-selection">
+    <div class="career-container">
+      <div class="welcome-message">
+        <h1>¡Bienvenido(a) <span id="user-name-display"></span>!</h1>
+        <p>Selecciona tu carrera para continuar</p>
+      </div>
+
+      <div class="career-grid">
+        <div class="career-card" data-career="sistemas-actual">
+          <h3>Ingeniería en Sistemas</h3>
+          <p>Plan de estudios antiguo </p>
+        </div>
+
+        <div class="career-card" data-career="sistemas-nuevo">
+          <h3>Ingeniería en Sistemas Computacionales</h3>
+          <p>Plan de estudios nuevo </p>
+        </div>
+
+        <div class="career-card" data-career="mecanica">
+          <h3>Ingeniería Mecánica</h3>
+          <p></p>
+        </div>
+
+        <div class="career-card" data-career="electrica">
+          <h3>Ingeniería Eléctrica</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="continue-btn" id="continue-career-btn" disabled>Continuar</button>
+        <button class="logout-btn-career" id="logout-btn-career">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MALLA CURRICULAR
+  ========================================== -->
+  <div id="malla-curricular-container" class="malla-curricular-container">
+    <div class="malla-header">
+      <h1 id="career-title">Malla Curricular</h1>
+      <div class="user-info">
+        Bienvenido(a): <strong id="user-name-malla"></strong>
+      </div>
+      <div class="header-controls">
+        <button class="change-career-btn" id="change-career-btn">Cambiar Carrera</button>
+        <button class="logout-btn-malla" id="logout-btn-malla">Cerrar Sesión</button>
+      </div>
+    </div>
+
+    <div class="malla-content">
+      <!-- Leyenda de colores -->
+      <div class="legend">
+        <h3>Leyenda por Departamentos</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <div class="legend-color matematicas"></div>
+            <span class="legend-text">Matemática Pura</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color fisica"></div>
+            <span class="legend-text">Materia Condensada</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color sistemas"></div>
+            <span class="legend-text">Ingeniería en Sistemas</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color quimica"></div>
+            <span class="legend-text">Química</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color electrica"></div>
+            <span class="legend-text">Ingeniería Eléctrica</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color mecanica"></div>
+            <span class="legend-text">Ingeniería Mecánica</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color defider"></div>
+            <span class="legend-text">DEFIDER</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color ingles"></div>
+            <span class="legend-text">Lenguas Extranjeras</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color dibujo"></div>
+            <span class="legend-text">Dibujo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLAN DE INGENIERÍA EN SISTEMAS - antiguo -->
+      <div id="sistemas-actual-content" style="display: none;">
+        
+        <!-- PRIMER PERÍODO -->
+        <div class="period">
+          <div class="period-header">
+            <h2>Primer Período</h2>
+            <p>Materias introductorias y fundamentos básicos</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia sistemas" id="IS-110" data-requisitos="">
+              <div class="codigo">IS-110</div>
+              <h3>Introducción a la Ingeniería en Sistemas</h3>
+              <div class="departamento">Depto. Ingeniería en Sistemas</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-110" data-requisitos="">
+              <div class="codigo">MM-110</div>
+              <h3>Matemática I</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-111" data-requisitos="">
+              <div class="codigo">MM-111</div>
+              <h3>Geometría y Trigonometría</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia defider" id="SC-101" data-requisitos="">
+              <div class="codigo">SC-101</div>
+              <h3>Sociología</h3>
+              <div class="departamento">Depto. DEFIDER</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEGUNDO PERÍODO -->
+        <div class="period">
+          <div class="period-header">
+            <h2>Segundo Período</h2>
+            <p>Continuación de fundamentos y primeros cursos especializados</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia matematicas" id="MM-211" data-requisitos="MM-110">
+              <div class="codigo">MM-211</div>
+              <h3>Vectores y Matrices</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">3 UV</div>
+              <div class="requisitos">Requisito: MM-110</div>
+            </div>
+            
+            <div class="materia ingles" id="IN-101" data-requisitos="">
+              <div class="codigo">IN-101</div>
+              <h3>Inglés I</h3>
+              <div class="departamento">Depto. Inglés</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-201" data-requisitos="MM-110,MM-111">
+              <div class="codigo">MM-201</div>
+              <h3>Cálculo I</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">5 UV</div>
+              <div class="requisitos">Requisito: MM-110, MM-111</div>
+            </div>
+            
+            <div class="materia defider" id="ELECT-DEP" data-requisitos="">
+              <div class="codigo">ELECT-DEP</div>
+              <h3>Electiva - Campo de los Deportes</h3>
+              <div class="departamento">Depto. DEFIDER</div>
+              <div class="creditos">2 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERCER PERÍODO -->
+        <div class="period">
+          <div class="period-header">
+            <h2>Tercer Período</h2>
+            <p>Profundización en matemáticas y primeros cursos de programación</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia matematicas" id="MM-202" data-requisitos="MM-201">
+              <div class="codigo">MM-202</div>
+              <h3>Cálculo II</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: MM-201</div>
+            </div>
+            
+            <div class="materia ingles" id="IN-102" data-requisitos="IN-101">
+              <div class="codigo">IN-102</div>
+              <h3>Inglés II</h3>
+              <div class="departamento">Depto. Inglés</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: IN-101</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-314" data-requisitos="MM-110,IS-110">
+              <div class="codigo">MM-314</div>
+              <h3>Programación I</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: MM-110, IS-110</div>
+            </div>
+            
+            <div class="materia defider" id="EG-011" data-requisitos="">
+              <div class="codigo">EG-011</div>
+              <h3>Español General I</h3>
+              <div class="departamento">Depto. DEFIDER</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CUARTO PERÍODO -->
+        <div class="period">
+          <div class="period-header">
+            <h2>Cuarto Período</h2>
+            <p>Introducción a la física y continuación de programación</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia fisica" id="FS-100" data-requisitos="MM-201,MM-211">
+              <div class="codigo">FS-100</div>
+              <h3>Física I</h3>
+              <div class="departamento">Depto. Física</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: MM-201, MM-211</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-411" data-requisitos="MM-202">
+              <div class="codigo">MM-411</div>
+              <h3>Ecuaciones Diferenciales</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: MM-202</div>
+            </div>
+            
+            <div class="materia sistemas" id="IS-210" data-requisitos="MM-314">
+              <div class="codigo">IS-210</div>
+              <h3>Programación II</h3>
+              <div class="departamento">Depto. Ingeniería en Sistemas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: MM-314</div>
+            </div>
+            
+            <div class="materia defider" id="FF-101" data-requisitos="">
+              <div class="codigo">FF-101</div>
+              <h3>Filosofía</h3>
+              <div class="departamento">Depto. DEFIDER</div>
+              <div class="creditos">3 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 
+        ============================================
+        AQUÍ AGREGAR LOS PERÍODOS RESTANTES (5-15)
+        ============================================
+        Para agregar los períodos restantes, sigue esta estructura:
+        
+        <div class="period">
+          <div class="period-header">
+            <h2>[NÚMERO] Período</h2>
+            <p>Descripción del período</p>
+          </div>
+          <div class="subjects-grid">
+            [MATERIAS DEL PERÍODO]
+          </div>
+        </div>
+        
+        Para cada materia:
+        <div class="materia [TIPO_DEPARTAMENTO]" id="[CODIGO]" data-requisitos="[REQUISITOS_SEPARADOS_POR_COMAS]">
+          <div class="codigo">[CODIGO]</div>
+          <h3>[NOMBRE_MATERIA]</h3>
+          <div class="departamento">Depto. [NOMBRE_DEPARTAMENTO]</div>
+          <div class="creditos">[NUMERO] créditos</div>
+          <div class="requisitos">Requisito: [REQUISITOS O "Ninguno"]</div>
+        </div>
+        -->
+      </div>
+
+      <!-- 
+      ============================================
+      PLANES DE OTRAS CARRERAS
+      ============================================
+      Aquí agregar los planes para:
+      - sistemas-nuevo-content
+      - mecanica-content  
+      - electrica-content
+      
+      Cada plan debe seguir la misma estructura de períodos mostrada arriba.
+      -->
+      
+      <!-- PLAN INGENIERÍA EN SISTEMAS - NUEVO (PLACEHOLDER) -->
+      <div id="sistemas-nuevo-content" style="display: none;">
+        <div class="period">
+          <div class="period-header">
+            <h2>Primer Período</h2>
+            <p>Materias introductorias del plan nuevo</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia matematicas" id="MM-110-nuevo" data-requisitos="">
+              <div class="codigo">MM-110</div>
+              <h3>Matemática I</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-111-nuevo" data-requisitos="">
+              <div class="codigo">MM-111</div>
+              <h3>Geometría y Trigonometría</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <!-- TODO: Agregar resto de materias del plan nuevo -->
+          </div>
+        </div>
+        <!-- TODO: Agregar períodos restantes -->
+      </div>
+      <!-- PLAN INGENIERÍA MECÁNICA -->----------------------------------------------------------------------------------------
+<div id="mecanica-content" style="display: none;">
+
+  <!-- PRIMER AÑO - PRIMER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Primer Período - Primer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia matematicas" id="MM-110-mec" data-requisitos="">
+        <div class="codigo">MM-110</div>
+        <h3>Matemática I</h3>
+        <div class="departamento">Depto. Matemática Pura</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-111-mec" data-requisitos="">
+        <div class="codigo">MM-111</div>
+        <h3>Geometría y Trigonometría</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia defider" id="FF-101-mec" data-requisitos="">
+        <div class="codigo">FF-101</div>
+        <h3>Filosofía</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia defider" id="EG-101-mec" data-requisitos="">
+        <div class="codigo">EG-101</div>
+        <h3>Español General</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRIMER AÑO - SEGUNDO PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Segundo Período - Primer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia matematicas" id="MM-201-mec" data-requisitos="MM-110-mec,MM-111-mec">
+        <div class="codigo">MM-201</div>
+        <h3>Cálculo I</h3>
+        <div class="departamento">Depto. Matemática Pura</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: MM-110, MM-111</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-211-mec" data-requisitos="MM-110-mec,MM-111-mec">
+        <div class="codigo">MM-211</div>
+        <h3>Vectores y Matrices</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-110, MM-111</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PRIMER AÑO - TERCER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Tercer Período - Primer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia matematicas" id="MM-202-mec" data-requisitos="MM-201-mec">
+        <div class="codigo">MM-202</div>
+        <h3>Cálculo II</h3>
+        <div class="departamento">Depto. Matemática Pura</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: MM-201</div>
+      </div>
+
+      <div class="materia quimica" id="QQ-100-mec" data-requisitos="MM-110-mec">
+        <div class="codigo">QQ-100</div>
+        <h3>Química Fundamental (L)</h3>
+        <div class="departamento">Depto. Química</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: MM-110</div>
+      </div>
+
+      <div class="materia defider" id="SC-101-mec" data-requisitos="">
+        <div class="codigo">SC-101</div>
+        <h3>Sociología</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia ingles" id="IN-101-mec" data-requisitos="">
+        <div class="codigo">IN-101</div>
+        <h3>Inglés General I</h3>
+        <div class="departamento">Depto. Lenguas Extranjeras</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia defider" id="EL-1-mec" data-requisitos="">
+        <div class="codigo">--</div>
+        <h3>Electiva I (Humanidades)</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEGUNDO AÑO - PRIMER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Primer Período - Segundo Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia fisica" id="FS-100-mec" data-requisitos="MM-201-mec">
+        <div class="codigo">FS-100</div>
+        <h3>Física General I</h3>
+        <div class="departamento">Depto. Física</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: MM-201</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-411-mec" data-requisitos="MM-201-mec, MM-211-mec">
+        <div class="codigo">MM-411</div>
+        <h3>Ecuaciones Diferenciales</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-201, MM-211 </div>
+      </div>
+
+      <div class="materia INGENIERÍA mecanica" id="IM-135-mec" data-requisitos="">
+        <div class="codigo">IM-135</div>
+        <h3>Introducción a la Ingeniería Mecánica</h3>
+        <div class="departamento">Depto. ingeniería</div>
+        <div class="creditos">2 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia ingles" id="IN-102-mec" data-requisitos="IN-101-mec">
+        <div class="codigo">IN-102</div>
+        <h3>Inglés General II</h3>
+        <div class="departamento">Depto. Lenguas Extranjeras</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IN-101</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SEGUNDO AÑO - SEGUNDO PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Segundo Período - Segundo Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia fisica" id="FS-200-mec" data-requisitos="FS-100-mec,MM-202-mec">
+        <div class="codigo">FS-200</div>
+        <h3>Física General II (L)</h3>
+        <div class="departamento">Depto. Física</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: FS-100, MM-202 </div>
+      </div>
+
+      <div class="materia mecanica" id="IM-224-mec" data-requisitos="FS-100-mec,MM-202-mec">
+        <div class="codigo">IM-224</div>
+        <h3>Mecánica para Ingenieros I </h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: FS-100, MM-202</div>
+      </div>
+  </div>
+
+  <!-- SEGUNDO AÑO - TERCER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Tercer Período - Segundo Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia matematicas" id="M-212-mec" data-requisitos="IM-224-mec,QQ-100-mec, IM-135-mec">
+        <div class="codigo">M-212</div>
+        <h3>Metalurgia (L)</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-224, QQ-100, IM-135</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-314-mec" data-requisitos="MM-211-mec">
+        <div class="codigo">MM-314</div>
+        <h3>Programación (L)</h3>
+        <div class="departamento">Depto. Matemática Pura</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-211</div>
+      </div>
+
+      <div class="materia dibujo" id="DQ-101-mec" data-requisitos="MM-111-mec">
+        <div class="codigo">DQ-101</div>
+        <h3>Dibujo I</h3>
+        <div class="departamento">Depto. Dibujo</div>
+        <div class="creditos">2 UV</div>
+        <div class="requisitos">Requisito: MM-111</div>
+      </div>
+
+      <div class="materia ingles" id="IN-103-mec" data-requisitos="IN-102-mec">
+        <div class="codigo">IN-103</div>
+        <h3>Inglés General III</h3>
+        <div class="departamento">Depto. Lenguas Extranjeras</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IN-102</div>
+      </div>
+
+      <div class="materia defider" id="HH-101-mec-2" data-requisitos="">
+        <div class="codigo">HH-101</div>
+        <h3>Historia de Honduras</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+      <div class="materia defider" id="EL-2-mec" data-requisitos="">
+        <div class="codigo">--</div>
+        <h3>Electiva II (Arte o Deporte)</h3>
+        <div class="departamento">Depto. DEFIDER</div>
+        <div class="creditos">-- UV</div>
+        <div class="requisitos">Requisito: Ninguno</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TERCER AÑO - PRIMER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Primer Período - Tercer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-233-mec" data-requisitos="MM-411-mec">
+        <div class="codigo">IM-233</div>
+        <h3>Métodos Matemáticos en Ingeniería</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-411</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-234-mec" data-requisitos="IM-224-mec">
+        <div class="codigo">IM-234</div>
+        <h3>Mecánica para Ingenieros II</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-224</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-315-mec" data-requisitos="FS-200-mec">
+        <div class="codigo">IM-315</div>
+        <h3>Mecánica de Fluidos (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: FS-200</div>
+      </div>
+
+      <div class="materia dibujo" id="DQ-102-mec" data-requisitos="DQ-101-mec">
+        <div class="codigo">DQ-102</div>
+        <h3>Dibujo II</h3>
+        <div class="departamento">Depto. Dibujo</div>
+        <div class="creditos">2 UV</div>
+        <div class="requisitos">Requisito: DQ-101</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-412-mec" data-requisitos="">
+        <div class="codigo">MM-412</div>
+        <h3>Análisis Numérico</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">??? UV</div>
+        <div class="requisitos">Requisito: ???</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TERCER AÑO - SEGUNDO PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Segundo Período - Tercer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-313-mec" data-requisitos="IM-224-mec">
+        <div class="codigo">IM-313</div>
+        <h3>Mecánica de Materiales I</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">5 UV</div>
+        <div class="requisitos">Requisito: IM-224</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-328-mec" data-requisitos="IM-315-mec">
+        <div class="codigo">IM-328</div>
+        <h3>Termodinámica I (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-315</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TERCER AÑO - TERCER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Tercer Período - Tercer Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-327-mec" data-requisitos="IM-313-mec">
+        <div class="codigo">IM-327</div>
+        <h3>Mecánica de Materiales II</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-313</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-225-mec" data-requisitos="FS-200-mec">
+        <div class="codigo">IM-225</div>
+        <h3>Metrología</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: FS-200</div>
+      </div>
+
+      <div class="materia matematicas" id="MM-401-mec" data-requisitos="MM-202">
+        <div class="codigo">MM-401</div>
+        <h3>Estadística</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-202</div>
+      </div>
+
+      <div class="materia dibujo" id="DQ-103" data-requisitos="DQ-102">
+        <div class="codigo">MM-401</div>
+        <h3>Dibujo Técnico</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">2 UV</div>
+        <div class="requisitos">Requisito: DQ-102</div>
+      </div>
+
+      <div class="materia ingenieria electrica" id="IE-265-mec" data-requisitos="FS-200">
+        <div class="codigo">IE-265</div>
+        <h3>Electrotecnia I</h3>
+        <div class="departamento">Depto. Matemática</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: FS-200</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CUARTO AÑO - PRIMER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Primer Período - Cuarto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-331-mec" data-requisitos="IM-327-mec">
+        <div class="codigo">IM-331</div>
+        <h3>Elementos de Máquinas I</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-327</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-323-mec" data-requisitos="IM-212-mec,IM-225-mec">
+        <div class="codigo">IM-323</div>
+        <h3>Procesos de Manufactura I</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-212, IM-225</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-334-mec" data-requisitos="IM-328-mec">
+        <div class="codigo">IM-334</div>
+        <h3>Termodinámica II</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-328</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-326-mec" data-requisitos="DQ-102-mec,IM-234-mec">
+        <div class="codigo">IM-326</div>
+        <h3>Cinemática de Máquinas</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: DQ-102, IM-234</div>
+      </div>
+
+      <div class="materia electrica" id="IE-315-mec" data-requisitos="IE-265-mec">
+        <div class="codigo">IE-315</div>
+        <h3>Electrotecnia II (L)</h3>
+        <div class="departamento">Depto. Ing. Eléctrica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IE-265</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CUARTO AÑO - SEGUNDO PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Segundo Período - Cuarto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-419-mec" data-requisitos="IM-331-mec,MM-401-mec">
+        <div class="codigo">IM-419</div>
+        <h3>Elementos de Máquinas II</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-331</div>
+      </div>
+
+      <div class="materia Ingenieria Industrial" id="II-336-mec" data-requisitos="MM-401-mec">
+        <div class="codigo">II-336</div>
+        <h3>Planificación y Control de Proyectos</h3>
+        <div class="departamento">Depto. Ing. Industrial</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: MM-401</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CUARTO AÑO - TERCER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Tercer Período - Cuarto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="II-418-mec" data-requisitos="II-336-mec">
+        <div class="codigo">II-418</div>
+        <h3>Ingeniería Económica</h3>
+        <div class="departamento">Depto. Ing. Industrial</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-336</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-418-mec" data-requisitos="IM-328-mec">
+        <div class="codigo">IM-418</div>
+        <h3>Turbomáquinas</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-328</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-414-mec" data-requisitos="IM-334-mec">
+        <div class="codigo">IM-414</div>
+        <h3>Transferencia de Calor I (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-334</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-333-mec" data-requisitos="IM-323-mec">
+        <div class="codigo">IM-333</div>
+        <h3>Procesos de Manufactura II (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-323</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-332-mec" data-requisitos="IM-326-mec">
+        <div class="codigo">IM-332</div>
+        <h3>Dinámica de Máquinas</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-326</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUINTO AÑO - PRIMER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Primer Período - Quinto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-521-mec" data-requisitos="IM-333-mec,IM-419-mec,DO-103-mec">
+        <div class="codigo">IM-521</div>
+        <h3>Elementos de Máquinas III</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-333, IM-419, DQ-103</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-529-mec" data-requisitos="IM-334-mec">
+        <div class="codigo">IM-529</div>
+        <h3>Motores de Combustión Interna (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-334</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-640-mec" data-requisitos="II-336-mec">
+        <div class="codigo">IM-640</div>
+        <h3>Ingeniería Ambiental</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-336</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-545-mec" data-requisitos="II-336-mec,IM-414-mec">
+        <div class="codigo">IM-545</div>
+        <h3>Plantas de Vapor (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-336, IM-414</div>
+      </div>
+
+      <div class="materia mecanica" id="II-416-mec" data-requisitos="IM-414-mec">
+        <div class="codigo">II-416</div>
+        <h3>Ing. de Producción I</h3>
+        <div class="departamento">Depto. Ing. Industrial</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: ???</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUINTO AÑO - SEGUNDO PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Segundo Período - Quinto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-533-mec" data-requisitos="IM-419-mec,II-336-mec,II-416-mec">
+        <div class="codigo">IM-533</div>
+        <h3>Ing. de Mantenimiento</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-419, II-336, II-416</div>
+      </div>
+
+      <div class="materia mecanica" id="II-426-mec" data-requisitos="II-416-mec">
+        <div class="codigo">II-426</div>
+        <h3>Ing. de Producción II</h3>
+        <div class="departamento">Depto. Ing. Industrial</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-416</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- QUINTO AÑO - TERCER PERÍODO -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Tercer Período - Quinto Año</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="OP-1-mec" data-requisitos="">
+        <div class="codigo">---</div>
+        <h3>Optativa I</h3>
+        <div class="departamento">Optativas</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: ---</div>
+      </div>
+
+      <div class="materia mecanica" id="OP-2-mec" data-requisitos="">
+        <div class="codigo">---</div>
+        <h3>Optativa II</h3>
+        <div class="departamento">Optativas</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: ---</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-531-mec" data-requisitos="II-418-mec,IM-521-mec,IM-640-mec,IM-414-mec,IM-315-mec">
+        <div class="codigo">IM-531</div>
+        <h3>Proyecto de Ingeniería Mecánica</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-418, IM-521</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-519-mec" data-requisitos="  IM-640-mec">
+        <div class="codigo">IM-519</div>
+        <h3>Aire Acondicionado (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">4 UV</div>
+        <div class="requisitos">Requisito: IM-640</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-532-mec" data-requisitos="IM-414-mec">
+        <div class="codigo">IM-532</div>
+        <h3>Instalación Electromecánicas (L)</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-414</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-650-mec" data-requisitos="IE-315-mec">
+        <div class="codigo">IM-650</div>
+        <h3>Seminario de Investigación</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IE-315</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ASIGNATURAS OPTATIVAS -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Lista de Asignaturas Optativas</h2>
+    </div>
+    <div class="subjects-grid">
+
+      <div class="materia mecanica" id="IM-534-mec" data-requisitos="IM-418-mec">
+        <div class="codigo">IM-534</div>
+        <h3>Bombas y Compresores</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-418</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-527-mec" data-requisitos="IM-332-mec">
+        <div class="codigo">IM-527</div>
+        <h3>Vibraciones Mecánicas</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-332</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-535-mec" data-requisitos="II-418-mec">
+        <div class="codigo">IM-535</div>
+        <h3>Relaciones Industriales</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: II-418</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-536-mec" data-requisitos="IM-414-mec">
+        <div class="codigo">IM-536</div>
+        <h3>Refrigeración</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-414</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-537-mec" data-requisitos="IM-521-mec">
+        <div class="codigo">IM-537</div>
+        <h3>Diseño por Computadora</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-521</div>
+      </div>
+
+      <div class="materia mecanica" id="IM-538-mec" data-requisitos="IM-418-mec">
+        <div class="codigo">IM-538</div>
+        <h3>Sistemas Hidroneumáticos</h3>
+        <div class="departamento">Depto. Ing. Mecánica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IM-418</div>
+      </div>
+
+      <div class="materia electrica" id="IE-325-mec" data-requisitos="IE-315-mec">
+        <div class="codigo">IE-325</div>
+        <h3>Controles Eléctricos</h3>
+        <div class="departamento">Depto. Ing. Eléctrica</div>
+        <div class="creditos">3 UV</div>
+        <div class="requisitos">Requisito: IE-315</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESUMEN -->
+  <div class="period">
+    <div class="period-header">
+      <h2>Resumen del Plan de Estudios</h2>
+      <p><strong>Total de Asignaturas:</strong> 61</p>
+      <p><strong>Total de Unidades Valorativas:</strong> 213</p>
+      <p><em>Este plan de estudio es una síntesis informativa, propuesta por el Coordinador de la Carrera. Su versión oficial se encuentra en la Secretaría Académica.</em></p>
+    </div>
+  </div>
+
+</div>
+      
+
+      
+
+      <!-- PLAN INGENIERÍA ELÉCTRICA (PLACEHOLDER) -->
+      <div id="electrica-content" style="display: none;">
+        <div class="period">
+          <div class="period-header">
+            <h2>Primer Período</h2>
+            <p>Materias introductorias de ingeniería eléctrica</p>
+          </div>
+          <div class="subjects-grid">
+            <div class="materia matematicas" id="MM-110-ele" data-requisitos="">
+              <div class="codigo">MM-110</div>
+              <h3>Matemática I</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <div class="materia matematicas" id="MM-111-ele" data-requisitos="">
+              <div class="codigo">MM-111</div>
+              <h3>Geometría y Trigonometría</h3>
+              <div class="departamento">Depto. Matemáticas</div>
+              <div class="creditos">4 créditos</div>
+              <div class="requisitos">Requisito: Ninguno</div>
+            </div>
+            
+            <!-- TODO: Agregar resto de materias de eléctrica -->
+          </div>
+        </div>
+        <!-- TODO: Agregar períodos restantes -->
+      </div>
+
+    </div>
+    
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>Hecho por David Fernando López Urquía</p>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script>
+    // ==========================================
+    // CONFIGURACIÓN DE FIREBASE
+    // ==========================================
+    const firebaseConfig = {
+      apiKey: "AIzaSyCwgiFSrmqMVnsQlTJuoU447n60v5Rilw8",
+      authDomain: "plan-de-estudios-2542a.firebaseapp.com",
+      projectId: "plan-de-estudios-2542a",
+      storageBucket: "plan-de-estudios-2542a.firebasestorage.app",
+      messagingSenderId: "655765903934",
+      appId: "1:655765903934:web:379ebc37aed7a179c50f6f",
+      measurementId: "G-MCZZ7GWVJX"
+    };
+
+    // Inicializar Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // ==========================================
+    // ELEMENTOS DEL DOM
+    // ==========================================
+    const authContainer = document.getElementById('auth-container');
+    const careerSelection = document.getElementById('career-selection');
+    const mallaContainer = document.getElementById('malla-curricular-container');
+    
+    // Auth elements
+    const nameInput = document.getElementById('name-input');
+    const emailInput = document.getElementById('email-input');
+    const passwordInput = document.getElementById('password-input');
+    const loginBtn = document.getElementById('login-btn');
+    const errorMessage = document.getElementById('error-message');
+    const successMessage = document.getElementById('success-message');
+    const authForm = document.getElementById('auth-form');
+    const togglePassword = document.getElementById('toggle-password');
+    const signupToggle = document.getElementById('signup-toggle');
+    const loginToggle = document.getElementById('login-toggle');
+
+    // Career selection elements
+    const careerCards = document.querySelectorAll('.career-card');
+    const continueCareerBtn = document.getElementById('continue-career-btn');
+    const userNameDisplay = document.getElementById('user-name-display');
+    const logoutBtnCareer = document.getElementById('logout-btn-career');
+
+    // Malla elements
+    const careerTitle = document.getElementById('career-title');
+    const userNameMalla = document.getElementById('user-name-malla');
+    const changeCareerBtn = document.getElementById('change-career-btn');
+    const logoutBtnMalla = document.getElementById('logout-btn-malla');
+
+    let isLoginMode = true;
+    let selectedCareer = null;
+    let currentUser = null;
+
+    // ==========================================
+    // FUNCIONES DE UTILIDAD
+    // ==========================================
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+      successMessage.style.display = 'none';
+    }
+
+    function showSuccess(message) {
+      successMessage.textContent = message;
+      successMessage.style.display = 'block';
+      errorMessage.style.display = 'none';
+    }
+
+    function hideMessages() {
+      errorMessage.style.display = 'none';
+      successMessage.style.display = 'none';
+    }
+
+    function showScreen(screen) {
+      authContainer.style.display = screen === 'auth' ? 'block' : 'none';
+      careerSelection.style.display = screen === 'career' ? 'block' : 'none';
+      mallaContainer.style.display = screen === 'malla' ? 'block' : 'none';
+    }
+
+    function showCareerContent(career) {
+      // Ocultar todos los contenidos
+      const contents = ['sistemas-actual-content', 'sistemas-nuevo-content', 'mecanica-content', 'electrica-content'];
+      contents.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.style.display = 'none';
+      });
+      
+      // Mostrar el contenido correspondiente
+      const contentId = career + '-content';
+      const element = document.getElementById(contentId);
+      if (element) element.style.display = 'block';
+    }
+
+    function updateFormMode() {
+      const title = document.querySelector('h1');
+      const submitBtn = document.getElementById('login-btn');
+      const signupLink = document.querySelector('.signup-link');
+      const authToggle = document.querySelector('.auth-toggle');
+      const nameGroup = nameInput.parentElement;
+
+      if (isLoginMode) {
+        title.textContent = 'Inicia sesión en Urkía';
+        submitBtn.textContent = 'Iniciar sesión';
+        signupLink.style.display = 'block';
+        authToggle.style.display = 'none';
+        nameGroup.style.display = 'none';
+        nameInput.required = false;
+      } else {
+        title.textContent = 'Regístrate en Urkía';
+        submitBtn.textContent = 'Crear cuenta';
+        signupLink.style.display = 'none';
+        authToggle.style.display = 'block';
+        loginToggle.style.display = 'inline';
+        nameGroup.style.display = 'block';
+        nameInput.required = true;
+      }
+    }
+
+    function getCareerTitle(careerKey) {
+      const titles = {
+        'sistemas-actual': 'Ingeniería en Sistemas - Plan Actual',
+        'sistemas-nuevo': 'Ingeniería en Sistemas - Plan Nuevo',
+        'mecanica': 'Ingeniería Mecánica',
+        'electrica': 'Ingeniería Eléctrica'
+      };
+      return titles[careerKey] || 'Malla Curricular';
+    }
+
+    // ==========================================
+    // FUNCIONALIDAD DE MATERIAS CORREGIDA
+    // ==========================================
+    
+    function actualizarEstadoMaterias() {
+      const materias = document.querySelectorAll('.materia');
+      const aprobadas = new Set([...materias].filter(m => m.classList.contains('aprobada')).map(m => m.id));
+      
+      materias.forEach(materia => {
+        const requisitos = materia.dataset.requisitos;
+        
+        // Remover estados previos
+        materia.classList.remove('habilitada', 'bloqueada');
+        
+        if (materia.classList.contains('aprobada')) {
+          return; // Ya está aprobada, no cambiar
+        }
+        
+        if (!requisitos || requisitos.trim() === '') {
+          // Sin requisitos, siempre habilitada
+          materia.classList.add('habilitada');
+        } else {
+          // Verificar requisitos
+          const listaRequisitos = requisitos.split(',').map(r => r.trim()).filter(r => r);
+          const requisitosAprobados = listaRequisitos.every(req => aprobadas.has(req));
+          
+          if (requisitosAprobados) {
+            materia.classList.add('habilitada');
+          } else {
+            materia.classList.add('bloqueada');
+          }
+        }
+      });
+    }
+
+    async function loadUserProgress() {
+      if (!currentUser) return;
+
+      try {
+        const snapshot = await db.collection("usuarios")
+          .doc(currentUser.uid)
+          .collection("materias")
+          .get();
+          
+        snapshot.forEach(doc => {
+          const materia = document.getElementById(doc.id);
+          if (materia && doc.data().aprobada) {
+            materia.classList.add('aprobada');
+          }
+        });
+        
+        actualizarEstadoMaterias();
+      } catch (error) {
+        console.error("Error al cargar progreso:", error);
+      }
+    }
+
+    // ==========================================
+    // EVENT LISTENERS - AUTENTICACIÓN
+    // ==========================================
+    
+    // Mostrar/ocultar contraseña
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      
+      const icon = type === 'password' ? 
+        '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>' :
+        '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+      
+      togglePassword.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">${icon}</svg>`;
+    });
+
+    // Alternar entre login y registro
+    signupToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      isLoginMode = false;
+      updateFormMode();
+    });
+
+    loginToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      isLoginMode = true;
+      updateFormMode();
+    });
+
+    // Manejar envío del formulario
+    authForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      hideMessages();
+      
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      const name = nameInput.value.trim();
+
+      if (!email || !password) {
+        showError('Por favor, completa todos los campos.');
+        return;
+      }
+
+      if (!isLoginMode && !name) {
+        showError('Por favor, ingresa tu nombre completo.');
+        return;
+      }
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = isLoginMode ? 'Iniciando sesión...' : 'Creando cuenta...';
+
+      try {
+        if (isLoginMode) {
+          await auth.signInWithEmailAndPassword(email, password);
+        } else {
+          const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+          // Guardar nombre del usuario
+          await db.collection('usuarios').doc(userCredential.user.uid).set({
+            name: name,
+            email: email,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+        }
+      } catch (error) {
+        let errorMsg = 'Ha ocurrido un error. Inténtalo de nuevo.';
+        
+        switch (error.code) {
+          case 'auth/user-not-found':
+            errorMsg = 'No se encontró ninguna cuenta con este correo electrónico.';
+            break;
+          case 'auth/wrong-password':
+            errorMsg = 'Contraseña incorrecta.';
+            break;
+          case 'auth/email-already-in-use':
+            errorMsg = 'Ya existe una cuenta con este correo electrónico.';
+            break;
+          case 'auth/weak-password':
+            errorMsg = 'La contraseña debe tener al menos 6 caracteres.';
+            break;
+          case 'auth/invalid-email':
+            errorMsg = 'Ingresa un correo electrónico válido.';
+            break;
+        }
+        
+        showError(errorMsg);
+      } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = isLoginMode ? 'Iniciar sesión' : 'Crear cuenta';
+      }
+    });
+
+    // ==========================================
+    // EVENT LISTENERS - SELECCIÓN DE CARRERA
+    // ==========================================
+    
+    careerCards.forEach(card => {
+      card.addEventListener('click', () => {
+        careerCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedCareer = card.dataset.career;
+        continueCareerBtn.disabled = false;
+      });
+    });
+
+    continueCareerBtn.addEventListener('click', async () => {
+      if (!selectedCareer || !currentUser) return;
+
+      try {
+        // Guardar carrera seleccionada
+        await db.collection('usuarios').doc(currentUser.uid).set({
+          selectedCareer: selectedCareer
+        }, { merge: true });
+
+        // Mostrar malla curricular
+        careerTitle.textContent = getCareerTitle(selectedCareer);
+        showCareerContent(selectedCareer);
+        showScreen('malla');
+        loadUserProgress();
+      } catch (error) {
+        console.error('Error al guardar carrera:', error);
+      }
+    });
+
+    changeCareerBtn.addEventListener('click', () => {
+      showScreen('career');
+    });
+
+    // ==========================================
+    // EVENT LISTENERS - LOGOUT
+    // ==========================================
+    
+    [logoutBtnCareer, logoutBtnMalla].forEach(btn => {
+      btn.addEventListener('click', () => {
+        auth.signOut();
+      });
+    });
+
+    // ==========================================
+    // AUTENTICACIÓN Y ESTADO
+    // ==========================================
+    
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        currentUser = user;
+        
+        try {
+          // Obtener datos del usuario
+          const userDoc = await db.collection('usuarios').doc(user.uid).get();
+          const userData = userDoc.data() || {};
+          
+          const userName = userData.name || user.displayName || user.email.split('@')[0];
+          userNameDisplay.textContent = userName;
+          userNameMalla.textContent = userName;
+
+          // Verificar si ya tiene carrera seleccionada
+          if (userData.selectedCareer) {
+            selectedCareer = userData.selectedCareer;
+            careerTitle.textContent = getCareerTitle(selectedCareer);
+            showCareerContent(selectedCareer);
+            showScreen('malla');
+            loadUserProgress();
+          } else {
+            showScreen('career');
+          }
+        } catch (error) {
+          console.error('Error al cargar datos del usuario:', error);
+          showScreen('career');
+        }
+      } else {
+        currentUser = null;
+        showScreen('auth');
+        // Limpiar formulario
+        emailInput.value = '';
+        passwordInput.value = '';
+        nameInput.value = '';
+        hideMessages();
+      }
+    });
+
+    // Event listeners para materias
+    document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('click', async (e) => {
+        if (e.target.classList.contains('materia') || e.target.closest('.materia')) {
+          const materia = e.target.classList.contains('materia') ? e.target : e.target.closest('.materia');
+          
+          if (!currentUser || materia.classList.contains('bloqueada')) return;
+
+          // Toggle estado de aprobada
+          materia.classList.toggle('aprobada');
+          actualizarEstadoMaterias();
+
+          // Guardar en Firestore
+          try {
+            await db.collection("usuarios")
+              .doc(currentUser.uid)
+              .collection("materias")
+              .doc(materia.id)
+              .set({
+                aprobada: materia.classList.contains('aprobada')
+              }, { merge: true });
+          } catch (error) {
+            console.error("Error al guardar materia:", error);
+          }
+        }
+      });
+
+      actualizarEstadoMaterias();
+    });
+
+    // ==========================================
+    // FUNCIONALIDADES ADICIONALES
+    // ==========================================
+    
+    document.getElementById('google-login').addEventListener('click', () => {
+      showError('Login con Google no implementado aún.');
+    });
+
+    document.getElementById('forgot-password').addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      
+      if (!email) {
+        showError('Ingresa tu correo electrónico para recuperar la contraseña.');
+        return;
+      }
+
+      auth.sendPasswordResetEmail(email)
+        .then(() => {
+          showSuccess('Se ha enviado un correo para restablecer tu contraseña.');
+        })
+        .catch((error) => {
+          showError('Error al enviar el correo de recuperación.');
+        });
+    });
+
+    // Inicializar modo de formulario
+    updateFormMode();
+  </script>
+
+</body>
+</html>
